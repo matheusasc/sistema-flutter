@@ -11,14 +11,21 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Tela Login',
+      title: 'PMAM',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primarySwatch: Colors.teal,
       ),
       home: Scaffold(
         appBar: AppBar(
-          title: Text('Tela Login'),
+          title: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+            Text('PMAM'),
+            Text('Polícia Militar do Amazonas',
+            style: TextStyle(fontSize: 14),),
+              ],
+          )
         ),
         body: const MyCustomForm(),
       ),
@@ -56,27 +63,18 @@ class MyCustomFormState extends State<MyCustomForm> {
         children: [
           Padding(
             padding: const EdgeInsets.only(bottom: 50),
-            child: Image.asset('images/img.png', width: 300, height: 100),
+            child: Image.asset('assets/images/img.png', width: 300, height: 100),
           ),
-          Container(
-            padding: const EdgeInsets.only(bottom: 20),
-            child: const Text(
-              'SISPMAM DTI-4',
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 20,
-                color: Colors.teal,
-              ),
-            ),
-          ),
+
           Container(
             width: 300,
             padding: EdgeInsets.symmetric(horizontal: 8, vertical: 16),
             child: TextField(
               decoration: InputDecoration(
                 border: OutlineInputBorder(),
-                labelText: 'E-mail ou CPF',
-              ),
+                labelText: 'CPF',
+                prefixIcon: Icon(Icons.person),
+              )
             ),
           ),
 
@@ -87,6 +85,7 @@ class MyCustomFormState extends State<MyCustomForm> {
               decoration: InputDecoration(
                 border: OutlineInputBorder(),
                 labelText: 'Senha',
+                prefixIcon: Icon(Icons.key),
               ),
             ),
           ),
@@ -107,9 +106,33 @@ class MyCustomFormState extends State<MyCustomForm> {
                 },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.teal,
+                  padding: EdgeInsets.symmetric(vertical: 20, horizontal: 130),
                 ),
                 child: const Text('Entrar'),
               ),
+            ),
+          ),
+
+          Center(
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                ElevatedButton(onPressed: (){},
+                  child: const Text('Esqueceu a senha?'),
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.grey,
+                    padding: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+                  ),
+                ),
+                SizedBox(width: 20),
+                ElevatedButton(onPressed: (){},
+                  child: const Text('Cadastre-se'),
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.grey,
+                    padding: EdgeInsets.symmetric(vertical: 10, horizontal: 35),
+                  ),
+                ),
+              ],
             ),
           ),
         ],
