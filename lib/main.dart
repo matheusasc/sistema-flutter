@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+
 void main() {
   runApp(const MyApp());
 }
@@ -11,7 +12,7 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    final customColor = MaterialColor(0xFF006633, {
+    const customColor = MaterialColor(0xFF006633, {
       50: Color(0xFF006633),
       100: Color(0xFF006633),
       200: Color(0xFF006633),
@@ -31,7 +32,7 @@ class MyApp extends StatelessWidget {
       ),
       home: Scaffold(
         appBar: AppBar(
-          title: Column(
+          title: const Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
             Text('PMAM'),
@@ -81,7 +82,7 @@ class MyCustomFormState extends State<MyCustomForm> {
 
           Container(
             width: 300,
-            padding: EdgeInsets.symmetric(horizontal: 8, vertical: 16),
+            padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
             child: TextFormField(
               validator: (value) {
                 if (value == null || value.isEmpty) {
@@ -89,7 +90,7 @@ class MyCustomFormState extends State<MyCustomForm> {
                 }
                 return null;
               },
-              decoration: InputDecoration(
+              decoration: const InputDecoration(
                 border: OutlineInputBorder(),
                 labelText: 'CPF',
                 prefixIcon: Icon(Icons.person),
@@ -99,15 +100,16 @@ class MyCustomFormState extends State<MyCustomForm> {
 
           Container(
             width: 300,
-            padding: EdgeInsets.symmetric(horizontal: 8, vertical: 16),
+            padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
             child: TextFormField(
+              obscureText: true,
               validator: (value) {
                 if (value == null || value.isEmpty) {
                   return 'Insira sua senha';
                 }
                 return null;
               },
-              decoration: InputDecoration(
+              decoration: const InputDecoration(
                 border: OutlineInputBorder(),
                 labelText: 'Senha',
                 prefixIcon: Icon(Icons.key),
@@ -128,13 +130,13 @@ class MyCustomFormState extends State<MyCustomForm> {
                       const SnackBar(content: Text('Carregando...')),
                     );
                     Navigator.of(context).pushReplacement(
-                      MaterialPageRoute(builder: (context) => HomePage()),
+                      MaterialPageRoute(builder: (context) => const HomePage()),
                     );
                   }
                 },
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: Color(0xFF006633),
-                  padding: EdgeInsets.symmetric(vertical: 20, horizontal: 130),
+                  backgroundColor: const Color(0xFF006633),
+                  padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 130),
                 ),
                 child: const Text('Entrar'),
               ),
@@ -146,19 +148,19 @@ class MyCustomFormState extends State<MyCustomForm> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 ElevatedButton(onPressed: (){},
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.grey,
+                    padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+                  ),
                   child: const Text('Esqueceu a senha?'),
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.grey,
-                    padding: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
-                  ),
                 ),
-                SizedBox(width: 20),
+                const SizedBox(width: 20),
                 ElevatedButton(onPressed: (){},
-                  child: const Text('Cadastre-se'),
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.grey,
-                    padding: EdgeInsets.symmetric(vertical: 10, horizontal: 35),
+                    padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 35),
                   ),
+                  child: const Text('Cadastre-se'),
                 ),
               ],
             ),
@@ -170,11 +172,13 @@ class MyCustomFormState extends State<MyCustomForm> {
 }
 
 class HomePage extends StatelessWidget {
+  const HomePage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Home'),
+        title: const Text('AppComando'),
           actions: <Widget>[
             IconButton(
               icon:
@@ -194,12 +198,12 @@ class HomePage extends StatelessWidget {
           children: [
             const DrawerHeader(
               decoration: BoxDecoration(
-                color: Colors.teal,
+                color: Color(0xFF006633),
               ),
               child: Text('Drawer Header'),
             ),
             ListTile(
-              leading: Icon(
+              leading: const Icon(
                 Icons.home,
               ),
               title: const Text('Page 1'),
@@ -208,7 +212,7 @@ class HomePage extends StatelessWidget {
               },
             ),
             ListTile(
-              leading: Icon(
+              leading: const Icon(
                 Icons.train,
               ),
               title: const Text('Page 2'),
@@ -219,16 +223,17 @@ class HomePage extends StatelessWidget {
           ],
         ),
       ),
-      body: Container(child: Padding(
+      body: Padding(
         padding: const EdgeInsets.all(10.0),
         child: GridView(
+          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 3,mainAxisSpacing: 10,crossAxisSpacing: 10),
           children: [
           InkWell(
             onTap: (){
-              Navigator.push(context, MaterialPageRoute(builder: (context)=>HomePage()));
+              Navigator.push(context, MaterialPageRoute(builder: (context) => const HomePage()));
             },
             child: Container(decoration: BoxDecoration(borderRadius: BorderRadius.circular(10),),
-              child: Column(
+              child: const Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Icon(Icons.cloud_done_rounded,size: 50,color: Colors.black,),
@@ -238,49 +243,49 @@ class HomePage extends StatelessWidget {
           ),
           InkWell(
             onTap: (){
-              Navigator.push(context, MaterialPageRoute(builder: (context)=>HomePage()));
+              Navigator.push(context, MaterialPageRoute(builder: (context) => const HomePage()));
             },
             child: Container(decoration: BoxDecoration(borderRadius: BorderRadius.circular(10),),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Image.asset('assets/icons/pdf.png', color: Colors.black, width: 50, height: 50,),
-                  Text("Boletim Geral",style: TextStyle(color: Colors.black,fontSize: 20),)
+                  const Text("Boletim Geral",style: TextStyle(color: Colors.black,fontSize: 20),)
                 ],),
             ),
           ),
           InkWell(
             onTap: (){
-              Navigator.push(context, MaterialPageRoute(builder: (context)=>HomePage()));
+              Navigator.push(context, MaterialPageRoute(builder: (context)=>const HomePage()));
             },
             child: Container(decoration: BoxDecoration(borderRadius: BorderRadius.circular(10),),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Image.asset('assets/icons/id-card.png', color: Colors.black, width: 50, height: 50,),
-                  Text("Carteira de Identidade", textAlign: TextAlign.center, style: TextStyle(color: Colors.black,fontSize: 20),)
+                  const Text("Carteira de Identidade", textAlign: TextAlign.center, style: TextStyle(color: Colors.black,fontSize: 20),)
                 ],),
             ),
           ),
           InkWell(
             onTap: (){
-              Navigator.push(context, MaterialPageRoute(builder: (context)=>HomePage()));
+              Navigator.push(context, MaterialPageRoute(builder: (context) => const HomePage()));
             },
             child: Container(decoration: BoxDecoration(borderRadius: BorderRadius.circular(10),),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Image.asset('assets/icons/sispmam.png',width: 50, height: 50,),
-                  Text("SISPMAM",style: TextStyle(color: Colors.black,fontSize: 20),)
+                  const Text("SISPMAM",style: TextStyle(color: Colors.black,fontSize: 20),)
                 ],),
             ),
           ),
             InkWell(
               onTap: (){
-                Navigator.push(context, MaterialPageRoute(builder: (context)=>HomePage()));
+                Navigator.push(context, MaterialPageRoute(builder: (context) => const HomePage()));
               },
               child: Container(decoration: BoxDecoration(borderRadius: BorderRadius.circular(10),),
-                child: Column(
+                child: const Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Icon(Icons.folder,size: 50,color: Colors.black,),
@@ -290,23 +295,23 @@ class HomePage extends StatelessWidget {
             ),
             InkWell(
               onTap: (){
-                Navigator.push(context, MaterialPageRoute(builder: (context)=>HomePage()));
+                Navigator.push(context, MaterialPageRoute(builder: (context) => const HomePage()));
               },
               child: Container(decoration: BoxDecoration(borderRadius: BorderRadius.circular(10),),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Image.asset('assets/icons/gun.png', color: Colors.black, width: 50, height: 50,),
-                    Text("CCAF",style: TextStyle(color: Colors.black,fontSize: 20),)
+                    const Text("CCAF",style: TextStyle(color: Colors.black,fontSize: 20),)
                   ],),
               ),
             ),
             InkWell(
               onTap: (){
-                Navigator.push(context, MaterialPageRoute(builder: (context)=>HomePage()));
+                Navigator.push(context, MaterialPageRoute(builder: (context) => const HomePage()));
               },
               child: Container(decoration: BoxDecoration(borderRadius: BorderRadius.circular(10),),
-                child: Column(
+                child: const Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Icon(Icons.book,size: 50,color: Colors.black,),
@@ -316,10 +321,10 @@ class HomePage extends StatelessWidget {
             ),
             InkWell(
               onTap: (){
-                Navigator.push(context, MaterialPageRoute(builder: (context)=>HomePage()));
+                Navigator.push(context, MaterialPageRoute(builder: (context) => const HomePage()));
               },
               child: Container(decoration: BoxDecoration(borderRadius: BorderRadius.circular(10),),
-                child: Column(
+                child: const Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Icon(Icons.book,size: 50,color: Colors.black,),
@@ -329,10 +334,10 @@ class HomePage extends StatelessWidget {
             ),
             InkWell(
               onTap: (){
-                Navigator.push(context, MaterialPageRoute(builder: (context)=>HomePage()));
+                Navigator.push(context, MaterialPageRoute(builder: (context) => const HomePage()));
               },
               child: Container(decoration: BoxDecoration(borderRadius: BorderRadius.circular(10),),
-                child: Column(
+                child: const Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Icon(Icons.book,size: 50,color: Colors.black,),
@@ -341,9 +346,8 @@ class HomePage extends StatelessWidget {
               ),
             ),
         ],
-          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 3,mainAxisSpacing: 10,crossAxisSpacing: 10),
         ),
-      ),),
+      ),
     );
   }
 }
